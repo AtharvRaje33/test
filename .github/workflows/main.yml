@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write  # 👈 this is the key fix
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,4 +19,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # if index.html is at root
+          publish_dir: .  # assuming index.html is at root
